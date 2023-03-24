@@ -1,15 +1,16 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import math
+import customtkinter as ctk
 
-root = tk.Tk()
+root = ctk.CTk()
 root.title("Triangle Area Calculator")
 root.resizable(False, False)
 
 canvas_width = 400
 canvas_height = 300
 
-canvas = tk.Canvas(root, width=canvas_width, height=canvas_height, bg='white')
+canvas = ctk.CTkCanvas(root, width=canvas_width, height=canvas_height, bg='white')
 canvas.pack(side=tk.LEFT, padx=10, pady=10)
 
 circle_radius = 10
@@ -43,24 +44,24 @@ line2 = canvas.create_line(circle2_x, circle2_y, circle3_x, circle3_y,
 line3 = canvas.create_line(circle3_x, circle3_y, circle1_x, circle1_y,
                            width=line_width, fill=line_fill, tags='line')
 
-textbox_width = 10
+textbox_width = 200
 
-circle1_x_textbox = ttk.Entry(root, width=textbox_width)
+circle1_x_textbox = ctk.CTkEntry(root, width=textbox_width)
 circle1_x_textbox.insert(0, str(circle1_x))
-circle1_x_textbox.pack()
-circle1_y_textbox = ttk.Entry(root, width=textbox_width)
+circle1_x_textbox.pack(pady=(25, 0))
+circle1_y_textbox = ctk.CTkEntry(root, width=textbox_width)
 circle1_y_textbox.insert(0, str(circle1_y))
 circle1_y_textbox.pack()
-circle2_x_textbox = ttk.Entry(root, width=textbox_width)
+circle2_x_textbox = ctk.CTkEntry(root, width=textbox_width)
 circle2_x_textbox.insert(0, str(circle2_x))
 circle2_x_textbox.pack()
-circle2_y_textbox = ttk.Entry(root, width=textbox_width)
+circle2_y_textbox = ctk.CTkEntry(root, width=textbox_width)
 circle2_y_textbox.insert(0, str(circle2_y))
 circle2_y_textbox.pack()
-circle3_x_textbox = ttk.Entry(root, width=textbox_width)
+circle3_x_textbox = ctk.CTkEntry(root, width=textbox_width)
 circle3_x_textbox.insert(0, str(circle3_x))
 circle3_x_textbox.pack()
-circle3_y_textbox = ttk.Entry(root, width=textbox_width)
+circle3_y_textbox = ctk.CTkEntry(root, width=textbox_width)
 circle3_y_textbox.insert(0, str(circle3_y))
 circle3_y_textbox.pack()
 
@@ -118,21 +119,21 @@ def calculate_area():
     elif selected_unit == 'Square millimeters':
         area = area * 1000000
 
-    area_label.config(text="Area: {:.2f} {}".format(area, selected_unit))
+    area_label.configure(text="Area: {:.2f} {}".format(area, selected_unit))
 
-input_frame = ttk.Frame(root)
-input_frame.pack(side=tk.TOP, padx=10, pady=10)
+input_frame = ctk.CTkFrame(root)
+input_frame.pack(side=tk.TOP, padx=10, pady=25)
 
-calculate_button = ttk.Button(input_frame, text="Calculate", command=calculate_area)
+calculate_button = ctk.CTkButton(input_frame, width=10, text="Calculate", fg_color="#50cc55", command=calculate_area)
 calculate_button.pack(side=tk.LEFT)
 
-unit_combobox = ttk.Combobox(input_frame, values=('Square meters', 'Square kilometers', 'Square centimeters',
+unit_combobox = ctk.CTkOptionMenu(input_frame, fg_color="#50cc55", button_color="#5ab85e", values=('Square meters', 'Square kilometers', 'Square centimeters',
                                                   'Acres', 'Hectares', 'Square feet', 'Square inches',
                                                   'Square yards', 'Square miles', 'Square millimeters'))
-unit_combobox.current(0)
+unit_combobox.set("Square meters")
 unit_combobox.pack(side=tk.LEFT)
 
-area_label = ttk.Label(root, text="Area: 0")
+area_label = ctk.CTkLabel(root, text="Area: 0")
 area_label.pack(side=tk.BOTTOM, padx=10, pady=10)
 
 root.mainloop()
