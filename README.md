@@ -5,7 +5,7 @@ This application allows you to easily calculate the area of a triangle using Her
 # Installation
 
 Note that you need python 3.6 or higher, you also need to have tkinter and pip installed.
-To begin using this application, you need to install the dependenciess from requirments.txt:
+To begin using this application, you need to install the customtkinter module (the only required for it to work):
 ```
 pip install customtkinter
 ```
